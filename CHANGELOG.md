@@ -1,3 +1,7 @@
+## [0.1.1+1] - 2020-07-15
+
+* Lower `meta` version (for Flutter).
+
 ## [0.1.1] - 2020-07-15
 
 * Factory method to shorten data creation.
