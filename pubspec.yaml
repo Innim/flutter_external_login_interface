@@ -1,6 +1,6 @@
 name: external_login_interface
 description: Interface for external login feature.
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/innim/
 repository: https://github.com/Innim/flutter_external_login_interface
 issue_tracker: https://github.com/Innim/flutter_external_login_interface/issues
@@ -10,6 +10,7 @@ environment:
 
 dependencies:
   async: ^2.4.0
+  meta: ^1.2.0
 
 dev_dependencies:
 

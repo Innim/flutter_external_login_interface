@@ -1,6 +1,7 @@
 library external_login_interface;
 
 import 'package:async/async.dart';
+import 'package:meta/meta.dart';
 
 /// Implementation of external login for specific service.
 abstract class ExternalLogin {
@@ -27,6 +28,16 @@ class ExternalLoginResult {
 
   /// User cancels log in.
   const ExternalLoginResult.cancel() : this.data = null;
+
+  /// Log in complete successfully.
+  factory ExternalLoginResult.successWith(
+      {String userId,
+      @required String token,
+      String fullName,
+      String clientId}) {
+    return ExternalLoginResult.success(
+        ExternalLoginData(userId, token, fullName, clientId: clientId));
+  }
 
   /// Returns `true` if log in was canceled by user.
   bool get isCanceled => data == null;
