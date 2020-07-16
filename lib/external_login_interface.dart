@@ -3,6 +3,8 @@ library external_login_interface;
 import 'package:async/async.dart';
 import 'package:meta/meta.dart';
 
+export 'package:async/async.dart' show Result;
+
 /// Implementation of external login for specific service.
 abstract class ExternalLogin {
   /// Start log in process.
