@@ -6,6 +6,9 @@ import 'package:meta/meta.dart';
 /// Implementation of external login for specific service.
 abstract class ExternalLogin {
   /// Start log in process.
+  ///
+  /// If is't error, than [ErrorResult.error]
+  /// should contains [ExternalLoginErrorData].
   Future<Result<ExternalLoginResult>> login();
 
   /// Logout from service.
@@ -72,4 +75,58 @@ class ExternalLoginData {
     return 'ExternalLoginResult{userId: $userId, token: $token, '
         'fullName: $fullName, clientId: $clientId}';
   }
+}
+
+/// Error data on log in failure.
+class ExternalLoginErrorData {
+  /// Error.
+  final ExternalLoginError error;
+
+  /// Localized error message. Will be shown to a user.
+  ///
+  /// Can be `null`.
+  final String localizedMessage;
+
+  /// Error description. It's for developer.
+  ///
+  /// Can be `null`.
+  final String description;
+
+  const ExternalLoginErrorData(this.error,
+      {this.localizedMessage, this.description})
+      : assert(error != null);
+
+  /// Creates data with [ExternalLoginError.unknown].
+  factory ExternalLoginErrorData.unknown(
+          {String localizedMessage, String description}) =>
+      ExternalLoginErrorData(ExternalLoginError.unknown,
+          localizedMessage: localizedMessage, description: description);
+
+  /// Creates data with [ExternalLoginError.loginFailed].
+  factory ExternalLoginErrorData.loginFailed(
+          {String localizedMessage, String description}) =>
+      ExternalLoginErrorData(ExternalLoginError.loginFailed,
+          localizedMessage: localizedMessage, description: description);
+
+  /// Creates data with [ExternalLoginError.cantGetProfile].
+  factory ExternalLoginErrorData.cantGetProfile(
+          {String localizedMessage, String description}) =>
+      ExternalLoginErrorData(ExternalLoginError.cantGetProfile,
+          localizedMessage: localizedMessage, description: description);
+
+  @override
+  String toString() => 'ExternalLoginErrorData{error: $error, '
+      'localizedMessage: $localizedMessage, description: $description}';
+}
+
+/// External login errors.
+enum ExternalLoginError {
+  /// Some unhandled error.
+  unknown,
+
+  /// Error during log in process.
+  loginFailed,
+
+  /// Get  profile data failed.
+  cantGetProfile
 }
