@@ -1,3 +1,7 @@
+## [0.1.3] - 2020-07-27
+
+* Added `isSupported` field.
+
 ## [0.1.2+1] - 2020-07-16
 
 * Export `Result`.

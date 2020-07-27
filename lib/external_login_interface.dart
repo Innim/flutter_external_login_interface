@@ -7,6 +7,9 @@ export 'package:async/async.dart' show Result;
 
 /// Implementation of external login for specific service.
 abstract class ExternalLogin {
+  /// Returns `true` if login via service is supported.
+  Future<bool> get isSupported;
+
   /// Start log in process.
   ///
   /// If is't error, than [ErrorResult.error]
