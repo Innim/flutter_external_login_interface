@@ -119,6 +119,18 @@ class ExternalLoginErrorData {
       ExternalLoginErrorData(ExternalLoginError.cantGetProfile,
           localizedMessage: localizedMessage, description: description);
 
+  /// Creates data with [ExternalLoginError.requireRetry].
+  factory ExternalLoginErrorData.requireRetry(
+          {String localizedMessage, String description}) =>
+      ExternalLoginErrorData(ExternalLoginError.requireRetry,
+          localizedMessage: localizedMessage, description: description);
+
+  /// Creates data with [ExternalLoginError.muted].
+  factory ExternalLoginErrorData.muted(
+          {String description}) =>
+      ExternalLoginErrorData(ExternalLoginError.muted,
+          description: description);
+
   @override
   String toString() => 'ExternalLoginErrorData{error: $error, '
       'localizedMessage: $localizedMessage, description: $description}';
@@ -133,5 +145,11 @@ enum ExternalLoginError {
   loginFailed,
 
   /// Get  profile data failed.
-  cantGetProfile
+  cantGetProfile,
+
+  /// Error that require to retry log in attempt.
+  requireRetry,
+
+  /// Error that shouldn'tbe shown to the user.
+  muted
 }

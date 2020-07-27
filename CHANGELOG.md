@@ -1,3 +1,7 @@
+## [0.1.4] - 2020-07-27
+
+* New errors: `muted` and `requireRetry`.
+
 ## [0.1.3] - 2020-07-27
 
 * Added `isSupported` field.
