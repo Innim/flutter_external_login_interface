@@ -17,7 +17,7 @@ abstract class ExternalLogin {
   ///
   /// If [loadAvatar] is `true` than implemention
   /// should request information about user picture.
-  Future<Result<ExternalLoginResult>> login({bool loadAvatar});
+  Future<Result<ExternalLoginResult>> login({bool loadAvatar = false});
 
   /// Logout from service.
   Future<void> logout();
