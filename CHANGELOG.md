@@ -1,3 +1,7 @@
+## [0.1.5] - 2020-07-30
+
+* Avatar URL.
+
 ## [0.1.4] - 2020-07-27
 
 * New errors: `muted` and `requireRetry`.

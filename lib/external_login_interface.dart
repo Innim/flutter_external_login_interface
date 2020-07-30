@@ -14,7 +14,10 @@ abstract class ExternalLogin {
   ///
   /// If is't error, than [ErrorResult.error]
   /// should contains [ExternalLoginErrorData].
-  Future<Result<ExternalLoginResult>> login();
+  ///
+  /// If [loadAvatar] is `true` than implemention
+  /// should request information about user picture.
+  Future<Result<ExternalLoginResult>> login({bool loadAvatar});
 
   /// Logout from service.
   Future<void> logout();
@@ -66,19 +69,22 @@ class ExternalLoginData {
   /// Full user name, if provided.
   final String fullName;
 
+  /// URL for user avatar, if provided.
+  final String avatarUrl;
+
   /// Client ID, if provided.
   ///
   /// Required by some services, e.g. Apple.
   final String clientId;
 
   const ExternalLoginData(this.userId, this.token, this.fullName,
-      {this.clientId})
+      {this.clientId, this.avatarUrl})
       : assert(token != null);
 
   @override
   String toString() {
     return 'ExternalLoginResult{userId: $userId, token: $token, '
-        'fullName: $fullName, clientId: $clientId}';
+        'fullName: $fullName, clientId: $clientId, avatarUrl: $avatarUrl}';
   }
 }
 
@@ -126,8 +132,7 @@ class ExternalLoginErrorData {
           localizedMessage: localizedMessage, description: description);
 
   /// Creates data with [ExternalLoginError.muted].
-  factory ExternalLoginErrorData.muted(
-          {String description}) =>
+  factory ExternalLoginErrorData.muted({String description}) =>
       ExternalLoginErrorData(ExternalLoginError.muted,
           description: description);
 
