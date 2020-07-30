@@ -45,9 +45,11 @@ class ExternalLoginResult {
       {String userId,
       @required String token,
       String fullName,
+      String avatarUrl,
       String clientId}) {
-    return ExternalLoginResult.success(
-        ExternalLoginData(userId, token, fullName, clientId: clientId));
+    return ExternalLoginResult.success(ExternalLoginData(
+        userId, token, fullName,
+        avatarUrl: avatarUrl, clientId: clientId));
   }
 
   /// Returns `true` if log in was canceled by user.
