@@ -41,15 +41,24 @@ class ExternalLoginResult {
   const ExternalLoginResult.cancel() : this.data = null;
 
   /// Log in complete successfully.
-  factory ExternalLoginResult.successWith(
-      {String userId,
-      @required String token,
-      String fullName,
-      String avatarUrl,
-      String clientId}) {
-    return ExternalLoginResult.success(ExternalLoginData(
-        userId, token, fullName,
-        avatarUrl: avatarUrl, clientId: clientId));
+  factory ExternalLoginResult.successWith({
+    String userId,
+    @required String token,
+    String fullName,
+    String avatarUrl,
+    String clientId,
+    String email,
+  }) {
+    return ExternalLoginResult.success(
+      ExternalLoginData(
+        userId,
+        token,
+        fullName,
+        avatarUrl: avatarUrl,
+        clientId: clientId,
+        email: email,
+      ),
+    );
   }
 
   /// Returns `true` if log in was canceled by user.
@@ -74,19 +83,23 @@ class ExternalLoginData {
   /// URL for user avatar, if provided.
   final String avatarUrl;
 
+  /// Email from user, if provided.
+  final String email;
+
   /// Client ID, if provided.
   ///
   /// Required by some services, e.g. Apple.
   final String clientId;
 
   const ExternalLoginData(this.userId, this.token, this.fullName,
-      {this.clientId, this.avatarUrl})
+      {this.clientId, this.avatarUrl, this.email})
       : assert(token != null);
 
   @override
   String toString() {
     return 'ExternalLoginResult{userId: $userId, token: $token, '
-        'fullName: $fullName, clientId: $clientId, avatarUrl: $avatarUrl}';
+        'fullName: $fullName, clientId: $clientId, avatarUrl: $avatarUrl, '
+        'email: $email,}';
   }
 }
 
