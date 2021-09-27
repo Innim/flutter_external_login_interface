@@ -1,3 +1,7 @@
+## [0.1.6+1] - 2021-09-27
+
+* Change `async` constraint.
+
 ## [0.1.6] - 2021-09-27
 
 * Null safety.
