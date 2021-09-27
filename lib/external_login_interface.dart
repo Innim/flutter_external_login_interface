@@ -1,7 +1,6 @@
 library external_login_interface;
 
 import 'package:async/async.dart';
-import 'package:meta/meta.dart';
 
 export 'package:async/async.dart' show Result;
 
@@ -30,24 +29,22 @@ abstract class ExternalLogin {
 /// just create result with [ExternalLoginResult.cancel]
 /// constructor.
 class ExternalLoginResult {
-  final ExternalLoginData data;
+  final ExternalLoginData? data;
 
   /// Log in complete successfully.
-  const ExternalLoginResult.success(ExternalLoginData data)
-      : assert(data != null),
-        this.data = data;
+  const ExternalLoginResult.success(ExternalLoginData data) : this.data = data;
 
   /// User cancels log in.
   const ExternalLoginResult.cancel() : this.data = null;
 
   /// Log in complete successfully.
   factory ExternalLoginResult.successWith({
-    String userId,
-    @required String token,
-    String fullName,
-    String avatarUrl,
-    String clientId,
-    String email,
+    String? userId,
+    required String token,
+    String? fullName,
+    String? avatarUrl,
+    String? clientId,
+    String? email,
   }) {
     return ExternalLoginResult.success(
       ExternalLoginData(
@@ -72,28 +69,27 @@ class ExternalLoginResult {
 /// Login data from the service.
 class ExternalLoginData {
   /// User ID from service, if provided..
-  final String userId;
+  final String? userId;
 
   /// Access token from service.
   final String token;
 
   /// Full user name, if provided.
-  final String fullName;
+  final String? fullName;
 
   /// URL for user avatar, if provided.
-  final String avatarUrl;
+  final String? avatarUrl;
 
   /// Email from user, if provided.
-  final String email;
+  final String? email;
 
   /// Client ID, if provided.
   ///
   /// Required by some services, e.g. Apple.
-  final String clientId;
+  final String? clientId;
 
   const ExternalLoginData(this.userId, this.token, this.fullName,
-      {this.clientId, this.avatarUrl, this.email})
-      : assert(token != null);
+      {this.clientId, this.avatarUrl, this.email});
 
   @override
   String toString() {
@@ -111,43 +107,42 @@ class ExternalLoginErrorData {
   /// Localized error message. Will be shown to a user.
   ///
   /// Can be `null`.
-  final String localizedMessage;
+  final String? localizedMessage;
 
   /// Error description. It's for developer.
   ///
   /// Can be `null`.
-  final String description;
+  final String? description;
 
   const ExternalLoginErrorData(this.error,
-      {this.localizedMessage, this.description})
-      : assert(error != null);
+      {this.localizedMessage, this.description});
 
   /// Creates data with [ExternalLoginError.unknown].
   factory ExternalLoginErrorData.unknown(
-          {String localizedMessage, String description}) =>
+          {String? localizedMessage, String? description}) =>
       ExternalLoginErrorData(ExternalLoginError.unknown,
           localizedMessage: localizedMessage, description: description);
 
   /// Creates data with [ExternalLoginError.loginFailed].
   factory ExternalLoginErrorData.loginFailed(
-          {String localizedMessage, String description}) =>
+          {String? localizedMessage, String? description}) =>
       ExternalLoginErrorData(ExternalLoginError.loginFailed,
           localizedMessage: localizedMessage, description: description);
 
   /// Creates data with [ExternalLoginError.cantGetProfile].
   factory ExternalLoginErrorData.cantGetProfile(
-          {String localizedMessage, String description}) =>
+          {String? localizedMessage, String? description}) =>
       ExternalLoginErrorData(ExternalLoginError.cantGetProfile,
           localizedMessage: localizedMessage, description: description);
 
   /// Creates data with [ExternalLoginError.requireRetry].
   factory ExternalLoginErrorData.requireRetry(
-          {String localizedMessage, String description}) =>
+          {String? localizedMessage, String? description}) =>
       ExternalLoginErrorData(ExternalLoginError.requireRetry,
           localizedMessage: localizedMessage, description: description);
 
   /// Creates data with [ExternalLoginError.muted].
-  factory ExternalLoginErrorData.muted({String description}) =>
+  factory ExternalLoginErrorData.muted({String? description}) =>
       ExternalLoginErrorData(ExternalLoginError.muted,
           description: description);
 
