@@ -91,7 +91,7 @@ class ExternalLoginData {
   final String? clientId;
 
   /// Additional data
-  final Map<String, Object>? data;
+  final Map<String, Object?>? data;
 
   const ExternalLoginData(
     this.userId,
