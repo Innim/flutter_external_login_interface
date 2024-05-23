@@ -1,3 +1,7 @@
+## [0.1.7] - 2024-05-23
+
+* Add field `additionalData` from ExternalLoginResult for more information on authorisation.
+
 ## [0.1.6+1] - 2021-09-27
 
 * Change `async` constraint.
