@@ -45,7 +45,7 @@ class ExternalLoginResult {
     String? avatarUrl,
     String? clientId,
     String? email,
-    Map<String, Map<String, Object>>? additionalData,
+    Map<String, Object>? data,
   }) {
     return ExternalLoginResult.success(
       ExternalLoginData(
@@ -55,7 +55,7 @@ class ExternalLoginResult {
         avatarUrl: avatarUrl,
         clientId: clientId,
         email: email,
-        additionalData: additionalData,
+        data: data,
       ),
     );
   }
@@ -91,7 +91,7 @@ class ExternalLoginData {
   final String? clientId;
 
   /// Additional data
-  final Map<String, Map<String, Object>>? additionalData;
+  final Map<String, Object>? data;
 
   const ExternalLoginData(
     this.userId,
@@ -100,14 +100,14 @@ class ExternalLoginData {
     this.clientId,
     this.avatarUrl,
     this.email,
-    this.additionalData,
+    this.data,
   });
 
   @override
   String toString() {
     return 'ExternalLoginResult{userId: $userId, token: $token, '
         'fullName: $fullName, clientId: $clientId, avatarUrl: $avatarUrl, '
-        'email: $email, data: $additionalData}';
+        'email: $email, data: $data}';
   }
 }
 
