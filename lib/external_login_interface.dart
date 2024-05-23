@@ -45,7 +45,7 @@ class ExternalLoginResult {
     String? avatarUrl,
     String? clientId,
     String? email,
-    Map<String, Object>? data,
+    Map<String, Object?>? data,
   }) {
     return ExternalLoginResult.success(
       ExternalLoginData(
