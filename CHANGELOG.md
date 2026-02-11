@@ -1,3 +1,7 @@
+## [0.1.8] - 2026-02-11
+
+* Added new `invalidTime` error with factory method.
+
 ## [0.1.7] - 2024-05-23
 
 * Add field `data` to `ExternalLoginResult` for any additional information.

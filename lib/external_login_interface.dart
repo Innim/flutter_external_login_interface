@@ -158,6 +158,11 @@ class ExternalLoginErrorData {
       ExternalLoginErrorData(ExternalLoginError.muted,
           description: description);
 
+  /// Creates data with [ExternalLoginError.invalidTime].
+  factory ExternalLoginErrorData.invalidTime({String? description}) =>
+      ExternalLoginErrorData(ExternalLoginError.invalidTime,
+          description: description);
+
   @override
   String toString() => 'ExternalLoginErrorData{error: $error, '
       'localizedMessage: $localizedMessage, description: $description}';
@@ -178,5 +183,12 @@ enum ExternalLoginError {
   requireRetry,
 
   /// Error that shouldn'tbe shown to the user.
-  muted
+  muted,
+
+  /// Time validation error.
+  ///
+  /// Failed due to excessive time difference
+  /// between request and server response.
+  /// Often caused by incorrect device time.
+  invalidTime,
 }
