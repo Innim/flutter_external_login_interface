@@ -158,9 +158,9 @@ class ExternalLoginErrorData {
       ExternalLoginErrorData(ExternalLoginError.muted,
           description: description);
 
-  /// Creates data with [ExternalLoginError.timeSync].
-  factory ExternalLoginErrorData.timeSync({String? description}) =>
-      ExternalLoginErrorData(ExternalLoginError.timeSync,
+  /// Creates data with [ExternalLoginError.invalidTime].
+  factory ExternalLoginErrorData.invalidTime({String? description}) =>
+      ExternalLoginErrorData(ExternalLoginError.invalidTime,
           description: description);
 
   @override
@@ -185,6 +185,10 @@ enum ExternalLoginError {
   /// Error that shouldn'tbe shown to the user.
   muted,
 
-  /// Device time is out of sync with server.
-  timeSync,
+  /// Time validation error.
+  ///
+  /// Failed due to excessive time difference
+  /// between request and server response.
+  /// Often caused by incorrect device time.
+  invalidTime,
 }
