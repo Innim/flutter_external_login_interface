@@ -158,6 +158,11 @@ class ExternalLoginErrorData {
       ExternalLoginErrorData(ExternalLoginError.muted,
           description: description);
 
+  /// Creates data with [ExternalLoginError.timeSync].
+  factory ExternalLoginErrorData.timeSync({String? description}) =>
+      ExternalLoginErrorData(ExternalLoginError.timeSync,
+          description: description);
+
   @override
   String toString() => 'ExternalLoginErrorData{error: $error, '
       'localizedMessage: $localizedMessage, description: $description}';
@@ -178,5 +183,8 @@ enum ExternalLoginError {
   requireRetry,
 
   /// Error that shouldn'tbe shown to the user.
-  muted
+  muted,
+
+  /// Device time is out of sync with server.
+  timeSync,
 }
