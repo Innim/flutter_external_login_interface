@@ -1,3 +1,7 @@
+## [0.1.9] - 2026-08-11
+
+* Added an optional authorization protocol version to `ExternalLoginData` to allow the server to select the appropriate authentication flow while preserving compatibility with older clients.
+
 ## [0.1.8] - 2026-02-11
 
 * Added new `invalidTime` error with factory method.

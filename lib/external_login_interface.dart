@@ -14,7 +14,7 @@ abstract class ExternalLogin {
   /// If is't error, than [ErrorResult.error]
   /// should contains [ExternalLoginErrorData].
   ///
-  /// If [loadAvatar] is `true` than implemention
+  /// If [loadAvatar] is `true` than implementation
   /// should request information about user picture.
   Future<Result<ExternalLoginResult>> login({bool loadAvatar = false});
 
@@ -90,6 +90,13 @@ class ExternalLoginData {
   /// Required by some services, e.g. Apple.
   final String? clientId;
 
+  /// The authorization protocol version used by the client.
+  ///
+  /// If `null`, the server must use the legacy authorization flow.
+  /// This allows older client versions that do not provide this value
+  /// to remain compatible with the server.
+  final int? version;
+
   /// Additional data
   final Map<String, Object?>? data;
 
@@ -100,6 +107,7 @@ class ExternalLoginData {
     this.clientId,
     this.avatarUrl,
     this.email,
+    this.version,
     this.data,
   });
 
@@ -107,7 +115,7 @@ class ExternalLoginData {
   String toString() {
     return 'ExternalLoginResult{userId: $userId, token: $token, '
         'fullName: $fullName, clientId: $clientId, avatarUrl: $avatarUrl, '
-        'email: $email, data: $data}';
+        'email: $email, version: $version, data: $data}';
   }
 }
 
