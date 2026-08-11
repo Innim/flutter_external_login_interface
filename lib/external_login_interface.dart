@@ -92,9 +92,9 @@ class ExternalLoginData {
 
   /// The authorization protocol version used by the client.
   ///
-  /// If `null`, the server must use the legacy authorization flow.
-  /// This allows older client versions that do not provide this value
-  /// to remain compatible with the server.
+  /// A null value means that the client does not specify a protocol version.
+  /// This allows the server to select the appropriate authorization flow
+  /// based on the available information.
   final int? version;
 
   /// Additional data
