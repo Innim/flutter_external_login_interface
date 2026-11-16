@@ -1,3 +1,8 @@
+## [0.1.10] - 2026-11-16
+
+* Added `ExternalLoginError.credentialMatchingFailed` error type to handle cases where authorization credentials cannot be matched or validated.
+* Added `ExternalLoginErrorData.credentialMatchingFailed` factory.
+
 ## [0.1.9] - 2026-08-11
 
 * Added an optional authorization protocol version to `ExternalLoginData` to allow the server to select the appropriate authentication flow while preserving compatibility with older clients.
