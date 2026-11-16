@@ -171,6 +171,12 @@ class ExternalLoginErrorData {
       ExternalLoginErrorData(ExternalLoginError.invalidTime,
           description: description);
 
+  /// Creates data with [ExternalLoginError.credentialMatchingFailed].
+  factory ExternalLoginErrorData.credentialMatchingFailed(
+          {String? description}) =>
+      ExternalLoginErrorData(ExternalLoginError.credentialMatchingFailed,
+          description: description);
+
   @override
   String toString() => 'ExternalLoginErrorData{error: $error, '
       'localizedMessage: $localizedMessage, description: $description}';
@@ -199,4 +205,7 @@ enum ExternalLoginError {
   /// between request and server response.
   /// Often caused by incorrect device time.
   invalidTime,
+
+  /// Credential matching failed.
+  credentialMatchingFailed,
 }
